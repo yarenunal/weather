@@ -1,0 +1,59 @@
+<ion-content>
+  <ion-card *ngIf="weatherData && weatherData.region != ''" class="weather-card" style="text-align: center; font-size: 45px"> 
+    <ion-card-header>
+      <ion-card-title style="text-align: center; font-size: 35px"> 
+        {{ weatherData.region }} / {{ weatherData.country | translate }}
+      </ion-card-title>
+    </ion-card-header>
+
+    <div style="width: 340px; height: 215px; position: relative">
+      <div style="width: 338px; height: 185px; left: 0px; top: 30px; position: absolute; background: linear-gradient(271deg, #362A84 0%, #5936B4 100%)"></div>
+      
+      <div style="left: 20px; top: 58px; position: absolute; text-align: center; color: white; font-size: 64px; font-family: SF Pro Display; font-weight: 400; line-height: 70px; letter-spacing: 0.37px; word-wrap: break-word">
+        {{ weatherData.temperature }} °C
+      </div>
+      <div style="left: 20px; top: 154px; position: absolute">
+        <span style="color: rgba(235, 235, 245, 0.60); font-size: 13px; font-family: SF Pro Display; font-weight: 400; line-height: 18px; word-wrap: break-word">
+          {{ 'Nem' | translate }}: {{ weatherData.humidity }}%<br/>
+        </span>
+      </div>
+      <div style="width: 67px; height: 18px; left: 251px; top: 177px; position: absolute; text-align: right; color: white; font-size: 13px; font-family: SF Pro Display; font-weight: 400; line-height: 18px; word-wrap: break-word">
+        {{ 'Durum' | translate }}: {{ weatherData.status | translate }}
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <img *ngIf="weatherData.status === 'Açık'" src="https://via.placeholder.com/2160x2160" alt="" style="width: 100px; height: auto;" />
+      <img *ngIf="weatherData.status === 'Bulutlu'" src="assets/animasyon/bulutlu.gif" alt="" style="width: 100px; height: auto;" />
+      <img *ngIf="weatherData.status === 'Yağmurlu'" src="https://via.placeholder.com/166x169" alt="" style="width: 100px; height: auto;" />
+      <img *ngIf="weatherData.status === 'Karla Karışık'" src="assets/animasyon/karla-karisik.gif" alt="Karla Karışık Hava" style="width: 100px; height: auto;" />
+    </div>
+  </ion-card>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" *ngFor="let forecast of forecastData"> 
+        <ion-card class="forecast-card">
+          <ion-icon [name]="getWeatherIcon(forecast.day.condition.text)" class="weather-icon"></ion-icon> 
+          <ion-card-header>
+            <ion-card-title>{{ forecast.date }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ 'Durum' | translate }}: {{ forecast.day.condition.text | translate }}</p>
+            <p>{{ 'Sıcaklık' | translate }}: {{ forecast.day.avgtemp_c }} °C</p>
+            <p>{{ 'Nem' | translate }}: {{ forecast.day.avghumidity }}%</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="open('/personal-settings')" style="text-align: center; font-size: 16px">
+        <ion-icon name="person-circle"> </ion-icon>
+        {{ 'Kişisel Ayarlar' | translate }}
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

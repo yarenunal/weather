@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">Kişisel Ayarlar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" *ngFor="let setting of settings; let i = index" class="ion-text-center">
+        <ion-card class="setting-card">
+          <ion-card-content>
+            <div class="setting-description">{{ setting.description }}</div>
+            <ion-input
+              placeholder="Yorumunuzu yazın..."
+              class="input-field"
+              [(ngModel)]="setting.userInput"  
+              (ionChange)="updateUserInput(i, setting.userInput)" 
+            ></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <!-- Saat Seçici Kartı -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Hangi saatte bildirim almak istersiniz?</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Saat</ion-label>
+          <ion-select [(ngModel)]="selectedHour" (ionChange)="saveSettings()">
+            <ion-select-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Dakika</ion-label>
+          <ion-select [(ngModel)]="selectedMinute" (ionChange)="saveSettings()">
+            <ion-select-option *ngFor="let minute of minutes" [value]="minute">{{ minute }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="full" (click)="setNotification()">Bildirim Ayarla</ion-button>
+  </ion-grid>
+</ion-content>

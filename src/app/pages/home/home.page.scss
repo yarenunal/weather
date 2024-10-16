@@ -1,0 +1,50 @@
+/* Ana sayfa arka plan rengi */
+ion-content {
+  --background: linear-gradient(168deg, #2E335A 0%, #1C1B33 100%);
+  height: 100%; /* Tüm ekranı kapla */
+  width: 100%;  /* Tüm genişliği kapla */
+}
+
+/* Hava durumu kartının stili */
+.weather-card {
+  background-color: #5936B4; /* Kartın arka plan rengi */
+  border-radius: 10px; /* Kenarları yuvarlaklaştırma */
+  box-shadow: 18px 18px 18px rgba(0, 0, 0, 0.2); /* Gölgeleme */
+  animation: fadeIn 0.5s ease-in-out; /* Animasyon ekleme */
+}
+
+/* 27.09 - Hava tahmin kartları için */
+.forecast-card {
+  background-color: #2E335A; /* Kart arka plan rengi */
+  border-radius: 20px; /* Kenarları yuvarlaklaştırma */
+  text-align: center; /* Metni ortala */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Gölgeleme */
+  margin-bottom: 5px; /* Kartlar arasındaki boşluk */
+  
+  display: flex; /* Flexbox kullan */
+  flex-direction: column; /* Dikey hizala */
+  justify-content: space-between; /* Kartın içindeki içeriklerin dağılımı */
+  flex: 1; /* Eşit genişlik ve yükseklik sağla */
+  height: 100%; /* Kartların tüm yüksekliğini kapla */
+  animation: fadeIn 0.5s ease-in-out; /* Animasyon ekleme */
+}
+
+/* Hava durumu ikonlarının boyutu ve animasyonu */
+.weather-icon {
+  font-size: 24px; /* İkon boyutu */
+  margin-right: 8px; /* İkon ile metin arasındaki boşluk */
+  vertical-align: middle; /* İkonu metinle hizalama */
+  animation: rotate 4s linear infinite; /* Döndürme animasyonu */
+}
+
+/* Fade in animasyonu */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}

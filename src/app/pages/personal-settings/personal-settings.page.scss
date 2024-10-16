@@ -1,0 +1,54 @@
+/* Header rengi ana sayfa rengi ile aynı */
+ion-header {
+    background-color: #2E335A; /* Ana sayfa arka plan rengi */
+  }
+  
+  /* Header başlık stili */
+  .header-title {
+    color: white; /* Başlık metni rengi */
+  }
+  
+  /* Sayfanın arka plan rengi */
+  ion-content {
+    --background: #2E335A; /* Arka plan rengi */
+  }
+  
+  /* Saydam ve yuvarlak kenarlı kart stili */
+  .setting-card {
+    background: rgba(255, 255, 255, 0.2); /* Saydam arka plan */
+    border-radius: 15px; /* Yuvarlak kenarlar */
+    margin: 20px 0; /* Kartlar arasında dikey boşluk */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    text-align: center; /* Metni ortala */
+    width: 100%; /* Kartın genişliği */
+    max-width: 400px; /* Maksimum genişlik ayarı */
+    display: flex; /* Flexbox ile içeriği hizala */
+    flex-direction: column; /* Dikey yönde içerik sıralama */
+    padding: 30px; /* Kart içindeki alan */
+  }
+  
+  /* Açıklama metni stili */
+  .setting-description {
+    color: white; /* Yazı rengi beyaz */
+    font-weight: 600; /* Yazıyı hafif kalın yap */
+  }
+  
+  /* Kullanıcı girişi için stil */
+  .input-field {
+    background-color: rgba(255, 255, 255, 0.5); /* Hafif saydam beyaz arka plan */
+    border: none; /* Kenarlık yok */
+    border-radius: 5px; /* Yuvarlak kenarlar */
+    padding: 5px; /* İç boşluk */
+    color: black; /* Yazı rengi siyah */
+    width: 100%; /* Genişlik ayarı */
+    font-size: 16px; /* Yazı boyutu */
+    margin-top: 10px; /* Giriş alanı ile metin arasında boşluk */
+  }
+  
+  /* Sayı için stil */
+  .setting-number {
+    font-weight: bold; /* Sayıyı kalın yap */
+    margin-left: 8px; /* Sayıyla metin arasındaki boşluk */
+    color: white; /* Yazı rengi beyaz */
+  }
+  
