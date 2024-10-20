@@ -18,7 +18,7 @@ export class HomePage {
     temperature: 0,
     humidity: 0,
   };
-  forecastData: any[] = []; // 3 günlük hava tahmini için boş array 27.09
+  forecastData: any[] = []; // 3 günlük hava tahmini için boş array
   city: string = 'Ankara'; // Varsayılan şehir
 
   constructor(
@@ -53,7 +53,6 @@ export class HomePage {
   async getWeather(city: string, lang: string = 'en') {
     try {
       const data: any = await this.weatherService.getWeather(city, lang);
-
       this.updateWeatherData(data);
     } catch (err: any) {
       console.error(err);
@@ -64,7 +63,6 @@ export class HomePage {
   async getWeatherByCoordinates(lat: number, lon: number, lang: string = 'en') {
     try {
       const data: any = await this.weatherService.getWeatherByCoordinates(lat, lon, lang);
-      
       this.updateWeatherData(data); // Hava durumu verilerini güncelle
     } catch (err: any) {
       console.error(err);
@@ -116,16 +114,16 @@ export class HomePage {
     if (url) this.router.navigateByUrl(url);
   }
 
-  // Bildirim gönderme fonksiyonu
+  // Yerel bildirim gönderme fonksiyonu
   async showLocalNotification() {
     await LocalNotifications.schedule({
       notifications: [
         {
-          title: 'Weather Update',
+          title: 'My App',
           body: `Current temperature in ${this.weatherData.region}: ${this.weatherData.temperature}°C`,
           id: Math.ceil(Math.random() * 100), // Rastgele bir ID
           schedule: { at: new Date(Date.now() + 1000 * 5) }, // 5 saniye sonra bildirim
-          ongoing: false,
+          ongoing: false, // Ongoing false
         },
       ],
     });
