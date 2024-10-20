@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
 
 @Injectable({
@@ -11,15 +10,25 @@ export class WeatherService {
 
   constructor() {}
 
-  // Hava durumu verisi ve tahmin almak için API çağrısı. 'forecast.json' endpoint'i kullanılıyor.
+  // Şehir ismi ile hava durumu verisi ve tahmin almak için API çağrısı
   async getWeather(city: string, lang: string = 'en') {
-    return (await axios
-      .get(`${this.apiUrl}?key=${this.apiKey}&q=${city}&days=4&aqi=no&lang=${lang}`, { // 4 günlük tahmin için 'days=4' eklendi
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        },
-        responseType: "json",
-      })).data;
+    return (await axios.get(`${this.apiUrl}?key=${this.apiKey}&q=${city}&days=4&aqi=no&lang=${lang}`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      },
+      responseType: "json",
+    })).data;
+  }
+
+  // Koordinatlar ile hava durumu verisi almak için API çağrısı
+  async getWeatherByCoordinates(lat: number, lon: number, lang: string = 'en') {
+    return (await axios.get(`${this.apiUrl}?key=${this.apiKey}&q=${lat},${lon}&days=4&aqi=no&lang=${lang}`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      },
+      responseType: "json",
+    })).data;
   }
 }
