@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'p-settings',
     loadChildren: () => import('./pages/personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule)
   },
+  {
+    path: 'alarm',
+    loadChildren: () => import('./pages/alarm/alarm.module').then( m => m.AlarmPageModule)
+  },
+  {
+    path: 'alarm',
+    loadChildren: () => import('./tabs/alarm/alarm.module').then( m => m.AlarmPageModule)
+  },
 ];
 
 @NgModule({
